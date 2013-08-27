@@ -1,0 +1,49 @@
+import datetime
+from Tkinter import *
+import ttk
+import tkMessageBox
+
+
+x = datetime.datetime.now().time()
+y = str(x)
+
+root = Tk()
+root.title("Purdue Student Information")
+
+mainframe = ttk.Frame(root, padding="3 3 12 12")
+mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+mainframe.columnconfigure(0, weight=1)
+mainframe.rowconfigure(0, weight=1)
+
+#Define variable to be redefined in text
+name = StringVar()
+room = StringVar()
+cell = StringVar()
+major = StringVar()
+
+
+#Dropdown Menu variable and default
+var = StringVar()
+var.set("Unknown")
+
+
+#Labels
+ttk.Label(mainframe, text="Name").grid(column=1, row=1, sticky=(E))
+ttk.Label(mainframe, text="Hall Name").grid(column=1, row=2, sticky=(E))
+ttk.Label(mainframe, text="Room #").grid(column=1, row=3, sticky=(E))
+ttk.Label(mainframe, text="Cell Phone").grid(column=1, row=4, sticky=(E))
+ttk.Label(mainframe, text="Major").grid(column=1, row=5, sticky=(E))
+ttk.Label(mainframe, text="Notes").grid(column=1, row=6, sticky=(E))
+ttk.Label(mainframe, text="Created by Hunter Thornsberry").grid(column=2, row=7, sticky=S)
+
+
+
+
+hour = int(y[0:2])
+minten = int(y[3:4])
+minone = int(y[4:5])
+minlow = int(y[3:5])
+amp = "Undefined"
+
+
+ttk.Label(mainframe, text="Name").grid(column=1, row=1, sticky=(E))
