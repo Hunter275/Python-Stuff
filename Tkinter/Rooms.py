@@ -15,28 +15,26 @@ cursor = conn.cursor()
 
 #Write to SQL
 def sqlwrite():
-	if str(name)[0:3] == "PY_" or str(room)[0:3] == "PY_"  or str(cell)[0:3] == "PY_"  or str(major)[0:3] == "PY_":
-		tkMessageBox.showinfo(message='Please completely fill out form')
-	else:
-		dname = name.get()
-		dhall = var.get()
-		droom = room.get()
-		dfloor = droom[0:1]
-		dcell = cell.get()
-		dmajor = major.get()
-		dnotes = text_notes.get(1.0, END)
-		#Table = "nameof"
-		cursor.execute("INSERT INTO rooms (name, hall, room, floor, cell, major, notes) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')" % (dname, dhall, droom, dfloor, dcell, dmajor, dnotes))
-		conn.commit()
-		conn.close()
-		text_name.delete(0, 200)
-		var.set("Unknown")
-		text_room.delete(0, 200)
-		text_cell.delete(0, 200)
-		text_major.delete(0, 200)
-		text_notes.delete(1.0, END)
-		warn = "SUCCESS"
-
+	#if name or hall or room or cell or major == PY_VAR0 or PY_VAR1 or PY_VAR2 or PY_VAR3:
+	#	print "Please enter all fields"
+	#else:	
+ 	dname = name.get()
+	dhall = var.get()
+	droom = room.get()
+	dfloor = droom[0:1]
+	dcell = cell.get()
+	dmajor = major.get()
+	dnotes = text_notes.get(1.0, END)
+	#Table = "nameof"
+	cursor.execute("INSERT INTO rooms (name, hall, room, floor, cell, major, notes) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')" % (dname, dhall, droom, dfloor, dcell, dmajor, dnotes))
+	conn.commit()
+	conn.close()
+	text_name.delete(0, 200)
+	var.set("Unknown")
+	text_room.delete(0, 200)
+	text_cell.delete(0, 200)
+	text_major.delete(0, 200)
+	text_notes.delete(1.0, END)
 
 root = Tk()
 root.title("Purdue Student Information")
@@ -88,10 +86,10 @@ text_major.grid(column=2, row=5, sticky=(N, W))
 text_notes = Text(mainframe, width=34, height=5)
 text_notes.grid(column=2, row=6, sticky=(N, W))
 
-
+print name, hall, room, cell, major, text_notes
 
 #Button
-ttk.Button(mainframe, text="Database", command=sqlwrite).grid(column=3, row=7, sticky=(N, W))
+ttk.Button(mainframe, text="Store", command=sqlwrite).grid(column=3, row=7, sticky=(N, W))
 
 for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
 root.mainloop()
